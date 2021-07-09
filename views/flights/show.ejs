@@ -1,8 +1,5 @@
 <%- include('../partials/header') %>
 <section>
-    <div>Seat:</div>
-</section>
-<section>
     <div>Airline:</div>
     <div><%= flights.airline %></div>
     <div>Airport:</div>
@@ -12,16 +9,21 @@
     <div>Departure:</div>
     <div><%= flights.departs %></div>
 </section>
-<br /><br />
 <h2>Destination</h2>
-<a href="/ticket/new" <%- title === 'Add Ticket' ? 'class="active"' : '' %>>Add Ticket</a>
-<table>
-	<thead>
-		<tr>
-			<th>Airport</th>
-			<th>Arrival</th>
-		</tr>
-	</thead>
+<a href="/flights/<%= flights._id %>/ticket/new" <%- title === 'Add Ticket' ? 'class="active"' : '' %>>Add Ticket</a>
+<h3>Tickets:</h3>
+  <div>
+    <table>
+      <tbody>
+        <% tickets.forEach((t) => { %>
+          <tr>
+            <td>Seat: <%= t.seat %></td>
+            <td>Price: <%= t.price %></td>
+          </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
 <br/><br/>
 <form
     id="add-destination-form"
@@ -53,6 +55,7 @@
 			<td><%= destination.arrival %></td>
 		</tr>
 		<% }); %>
+    </table>
 
 
 <%- include('../partials/footer') %>

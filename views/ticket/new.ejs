@@ -1,28 +1,12 @@
 <%- include('../partials/header') %>
-<form id="add-ticket-form" action="/tickets" method="POST">
-	<label>Seat:</label>
-	<input type="String" name="seat" />
+
+<form action="/flights/<%= flights %>/ticket" method="POST">
+    <input type="hidden" value="<%= flights %>" name="flightId" />
+    <label>Seat:</label>
+    <input name="seat" required pattern="[A-F][1-9]\d"/>
 	<label>Price:</label>
 	<input type="number" name="price" />
 	<input type="submit" value="Add Ticket" />
 </form>
 
-<!-- <table>
-    <thead>
-        <tr>
-            <th>Ticket:</th>
-            <th>Price:</th>
-            <th>Flight:</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% ticket.forEach(function(t) { %>
-        <tr>
-            <td><%= t.seat %></td>
-            <td><%= t.price %></td>
-            <td><%= t.flight %></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table> -->
 <%- include('../partials/footer') %>
